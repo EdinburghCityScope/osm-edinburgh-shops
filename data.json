@@ -1,0 +1,31 @@
+{
+  "id": "https://github.com/EdinburghCityScope/osm-edinburgh-shops",
+  "title": "Shops in Edinburgh",
+  "description": "Shops in Edinburgh sourced from OpenStreetMap.",
+  "landingPage" : "https://github.com/EdinburghCityScope/osm-edinburgh-shops",
+  "issued": "2016-10-21",
+  "modified": "2016-10-31",
+  "language": ["en"],
+  "publisher": {
+    "name": "OpenStreetMap Contributors",
+    "mbox": "opendata@edinburgh.gov.uk"
+  },
+  "spatial": "http://www.geonames.org/maps/google_55.95_-3.193.html",
+  "keyword": ["shop", "retail", "Edinburgh"],
+  "distribution": [
+    {
+      "title": "Edinburgh shops CSV file",
+      "description": "CSV representation of the shops in Edinburgh",
+      "mediaType": "text/csv",
+      "downloadURL": "https://raw.githubusercontent.com/EdinburghCityScope/osm-edinburgh-shops/master/data/edinburgh-shops.csv",
+      "license": "Data © OpenStreetMap contributors, ODbL 1.0. http://www.openstreetmap.org/copyright"
+    },
+    {
+      "title": "Edinburgh shops GeoJSON file",
+      "description": "GeoJSON representation of the shops in Edinburgh",
+      "mediaType": "application/vnd.geo+json",
+      "downloadURL": "https://raw.githubusercontent.com/EdinburghCityScope/osm-edinburgh-shops/master/data/edinburgh-shops.geojson",
+      "license": "Data © OpenStreetMap contributors, ODbL 1.0. http://www.openstreetmap.org/copyright"
+    }
+  ]
+}
