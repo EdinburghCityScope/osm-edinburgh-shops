@@ -28,7 +28,7 @@ edinburghcityscopeUtils.getDataFromURL(nominatim_api, (body) => {
             console.error("Overpass API " + err.message);
             return;
         }
-        fs.writeFile(outputGeoJsonFile, JSON.stringify(geoJsonData), (err) => {
+        fs.writeFile(outputGeoJsonFile, JSON.stringify(geoJsonData), 'utf8', (err) => {
             if (err) throw err;
             console.log('GeoJSON file saved to ' + outputGeoJsonFile);
         });
@@ -39,8 +39,11 @@ edinburghcityscopeUtils.getDataFromURL(nominatim_api, (body) => {
         var data = [];
         var keys;
         for (var i = 0; i < geoJsonData.features.length; ++i) {
-            datum = {'id': geoJsonData.features[i].id};
-            console.log( Object.keys(geoJsonData.features[i].properties.tags));
+            datum = {
+                'id': geoJsonData.features[i].id,
+                'latitude': geoJsonData.features[i].geometry.coordinates[1],
+                'longitude': geoJsonData.features[i].geometry.coordinates[0],
+            };
             keys = Object.keys(geoJsonData.features[i].properties.tags);
             for (var k = 0; k < keys.length; ++k) {
                  datum[keys[k]] = geoJsonData.features[i].properties.tags[keys[k]];
@@ -51,7 +54,9 @@ edinburghcityscopeUtils.getDataFromURL(nominatim_api, (body) => {
             data.push(datum);
         }
         fields = fields.sort();
-        // Make sure the id field is listed first.
+        // Make sure the id, latitude and longitude fields are listed first.
+        fields.unshift('longitude');
+        fields.unshift('latitude');
         fields.unshift('id');
 
         var csv = json2csv({'data': data, 'fields': fields});
