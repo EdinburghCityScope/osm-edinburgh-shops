@@ -41,5 +41,5 @@ node scripts/featureCollectionToLoopbackJson.js
 Importing data from OpenStreetMap's overpass API
 
 ```
-node scripts/osm-import.js
+node scripts/edinburgh-shops-extract.js
 ```
