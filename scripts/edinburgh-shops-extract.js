@@ -10,8 +10,10 @@ var outputCsvFile = path.join(datadir, 'edinburgh-shops.csv');
 var outputGeoJsonFile = path.join(datadir, 'edinburgh-shops.geojson');
 
 var nominatim_api = "http://nominatim.openstreetmap.org/search?q=City+of+Edinburgh,+Scotland,+UK&format=jsonv2&polygon=1";
-edinburghcityscopeUtils.getDataFromURL(nominatim_api, (body) => {
-    var city = JSON.parse(body);
+edinburghcityscopeUtils.getDataFromURL(nominatim_api, (err, data) => {
+    if (err) throw err
+
+    var city = JSON.parse(data);
     var boundary = city[0].polygonpoints;
     var polygon = "";
     for (var i = 0; i < boundary.length; i += 20) {
