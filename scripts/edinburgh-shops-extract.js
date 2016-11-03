@@ -59,7 +59,7 @@ edinburghcityscopeUtils.getDataFromURL(nominatim_api, (body) => {
         fields.unshift('latitude');
         fields.unshift('id');
 
-        var csv = json2csv({'data': data, 'fields': fields});
+        var csv = json2csv({ data: data, fields: fields, newLine: "\n" });
         fs.writeFile(outputCsvFile, csv, (err) => {
             if (err) throw err;
             console.log('CSV file saved to ' + outputCsvFile);
